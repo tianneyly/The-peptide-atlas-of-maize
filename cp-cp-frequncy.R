@@ -1,0 +1,25 @@
+ncpdata <- read.csv ("disstance-enhanced.csv", header = T, sep = ",")
+head(ncpdata)
+pdf(file="cp-cp-en.pdf", width= 7, height=7)
+hist(ncpdata$distance,  breaks = 75, col = "#C2DCBF",  freq = T, xlab = "Distance between adjacent CPs",ylab = "Number of CPs",xlim=c(0,20000),ylim=c(0,1500))
+lines(density(ncpdata$distance), col="black",lwd=2)
+rug(jitter(ncpdata$distance))
+dev.off()
+
+ncpdata <- read.csv ("disstance-cp.csv", header = T, sep = ",")
+head(ncpdata)
+pdf(file="cp-cp-cp.pdf", width= 7, height=7)
+hist(ncpdata$distance,  breaks = 75, col = "#FBE5B8",  freq = T, xlab = "",ylab = "",xlim=c(0,20000),ylim=c(0,700),main="",cex.axis = 1.5)
+lines(density(ncpdata$distance), col="black",lwd=2)
+mtext("Distance between adjacent CPs", side = 1, line = 2.5, cex = 2)  # X轴标题 
+mtext("Number of CPs", side = 2, line =2.5, cex = 2)  # Y轴标题
+rug(jitter(ncpdata$distance))
+dev.off()
+
+ncpdata <- read.csv ("disstance-specific.csv", header = T, sep = ",")
+head(ncpdata)
+pdf(file="cp-cp-sp.pdf", width= 7, height=7)
+hist(ncpdata$distance,  breaks = 75, col = "#FBE5B8",  freq = T, xlab = "Distance from TSS (Kb)",xlim=c(0,20000),ylim=c(0,1500))
+lines(density(ncpdata$distance), col="black",lwd=2)
+rug(jitter(ncpdata$distance))
+dev.off()
